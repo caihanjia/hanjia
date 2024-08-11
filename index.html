@@ -55,90 +55,45 @@
         }
         /* 背景水印样式 */
         .watermark-container {
-            display: grid;
-            grid-template-columns: repeat(9, 1fr);
-            grid-template-rows: repeat(5, 1fr);
-            width: 100vw;
-            height: 115vh;
             position: absolute;
             top: 0;
             left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-rows: repeat(auto-fill, minmax(180px, 1fr));
+
             padding-left: 0px;
             z-index: 1;
             pointer-events: none;
             gap: 0em;
             align-items: start;
+            overflow: hidden;
         }
         .watermark {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            transform: rotate(-20deg);
-            opacity: 0.6;
-            font-size: 18.5px;
+            width: 200px; /* 固定宽度 */
+            height: 150px; /* 固定高度 */
+            font-size: 18px; /* 固定字体大小 */
             font-weight: 500;
             color: rgba(0, 0, 0, 0.4);
+            transform: rotate(-20deg);
+            opacity: 0.6;
             text-align: left;
             white-space: pre-wrap;
             overflow: hidden;
-            clip-path: polygon(0 0, 65% 0, 100% 100%, 0 100%); /* 调整裁剪右上角 */
-            line-height: 1.4;
+            clip-path: polygon(0 0, 80% 0, 98% 100%, 0 100%);
 
-
-
-         }
+        }
     </style>
 </head>
 <body>
     <!-- 背景水印容器 -->
     <div class="watermark-container">
-        <!-- 45 个水印 -->
-        <div class="watermark" id="watermark1"></div>
-        <div class="watermark" id="watermark2"></div>
-        <div class="watermark" id="watermark3"></div>
-        <div class="watermark" id="watermark4"></div>
-        <div class="watermark" id="watermark5"></div>
-        <div class="watermark" id="watermark6"></div>
-        <div class="watermark" id="watermark7"></div>
-        <div class="watermark" id="watermark8"></div>
-        <div class="watermark" id="watermark9"></div>
-        <div class="watermark" id="watermark10"></div>
-        <div class="watermark" id="watermark11"></div>
-        <div class="watermark" id="watermark12"></div>
-        <div class="watermark" id="watermark13"></div>
-        <div class="watermark" id="watermark14"></div>
-        <div class="watermark" id="watermark15"></div>
-        <div class="watermark" id="watermark16"></div>
-        <div class="watermark" id="watermark17"></div>
-        <div class="watermark" id="watermark18"></div>
-        <div class="watermark" id="watermark19"></div>
-        <div class="watermark" id="watermark20"></div>
-        <div class="watermark" id="watermark21"></div>
-        <div class="watermark" id="watermark22"></div>
-        <div class="watermark" id="watermark23"></div>
-        <div class="watermark" id="watermark24"></div>
-        <div class="watermark" id="watermark25"></div>
-        <div class="watermark" id="watermark26"></div>
-        <div class="watermark" id="watermark27"></div>
-        <div class="watermark" id="watermark28"></div>
-        <div class="watermark" id="watermark29"></div>
-        <div class="watermark" id="watermark30"></div>
-        <div class="watermark" id="watermark31"></div>
-        <div class="watermark" id="watermark32"></div>
-        <div class="watermark" id="watermark33"></div>
-        <div class="watermark" id="watermark34"></div>
-        <div class="watermark" id="watermark35"></div>
-        <div class="watermark" id="watermark36"></div>
-        <div class="watermark" id="watermark37"></div>
-        <div class="watermark" id="watermark38"></div>
-        <div class="watermark" id="watermark39"></div>
-        <div class="watermark" id="watermark40"></div>
-        <div class="watermark" id="watermark41"></div>
-        <div class="watermark" id="watermark42"></div>
-        <div class="watermark" id="watermark43"></div>
-        <div class="watermark" id="watermark44"></div>
-        <div class="watermark" id="watermark45"></div>
+        <!-- 通过 JavaScript 动态生成水印元素 -->
     </div>
 
     <div class="contentBox">
@@ -169,10 +124,21 @@
             String(currentDate.getSeconds()).padStart(2, '0');
 
         // 将水印时间插入到水印中
-        const watermarkText = `赣ART1367\n${formattedDate}`;
-        document.querySelectorAll('.watermark').forEach(watermark => {
+        const watermarkText = `赣AR0F333\n${formattedDate}`;
+
+        // 获取水印容器
+        const watermarkContainer = document.querySelector('.watermark-container');
+
+        // 计算需要生成的水印数量
+        const totalColumns = Math.floor(window.innerWidth / 170); // 150px + 20px gap
+        const totalRows = Math.floor(window.innerHeight / 170);  // 150px + 20px gap
+
+        for (let i = 0; i < totalColumns * totalRows; i++) {
+            const watermark = document.createElement('div');
+            watermark.classList.add('watermark');
             watermark.textContent = watermarkText;
-        });
+            watermarkContainer.appendChild(watermark);
+        }
     </script>
 </body>
 </html>
