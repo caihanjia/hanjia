@@ -63,12 +63,11 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             grid-template-rows: repeat(auto-fill, minmax(180px, 1fr));
-
-            padding-left: 0px;
+            gap: 20px; /* 固定间距 */
             z-index: 1;
             pointer-events: none;
-            gap: 0em;
-            align-items: start;
+            padding-top: 1px; /* 调整距离顶部的距离 */
+            padding-left: 2px; /* 调整距离左端的距离 */
             overflow: hidden;
         }
         .watermark {
@@ -85,7 +84,7 @@
             text-align: left;
             white-space: pre-wrap;
             overflow: hidden;
-            clip-path: polygon(0 0, 80% 0, 98% 100%, 0 100%);
+            clip-path: polygon(0 0, 85% 0, 98% 100%, 0 100%);
 
         }
     </style>
