@@ -63,20 +63,20 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             grid-template-rows: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 20px; /* 固定间距 */
+            gap: 25px; /* 固定间距 */
             z-index: 1;
             pointer-events: none;
-            padding-top: 1px; /* 调整距离顶部的距离 */
-            padding-left: 2px; /* 调整距离左端的距离 */
+            padding-top: 0px; /* 调整距离顶部的距离 */
+            padding-left: 50px; /* 调整距离左端的距离 */
             overflow: hidden;
         }
         .watermark {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: start;
+            align-items: start;
             width: 200px; /* 固定宽度 */
             height: 150px; /* 固定高度 */
-            font-size: 18px; /* 固定字体大小 */
+            font-size: 19px; /* 固定字体大小 */
             font-weight: 500;
             color: rgba(0, 0, 0, 0.4);
             transform: rotate(-20deg);
