@@ -84,7 +84,7 @@
             text-align: left;
             white-space: pre-wrap;
             overflow: hidden;
-            clip-path: polygon(0 0, 95% 0, 98% 100%, 0 100%);
+
 
         }
     </style>
@@ -129,8 +129,8 @@
         const watermarkContainer = document.querySelector('.watermark-container');
 
         // 计算需要生成的水印数量
-        const totalColumns = Math.floor(window.innerWidth / 170); // 150px + 20px gap
-        const totalRows = Math.floor(window.innerHeight / 170);  // 150px + 20px gap
+        const totalColumns = Math.floor(window.innerWidth / 150); // 150px + 20px gap
+        const totalRows = Math.floor(window.innerHeight / 150);  // 150px + 20px gap
 
         for (let i = 0; i < totalColumns * totalRows; i++) {
             const watermark = document.createElement('div');
