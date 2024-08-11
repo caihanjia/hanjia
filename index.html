@@ -4,58 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RFID信息 - 车管系统</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         body {
-            margin: 0; /* 清除默认的 body 边距 */
-            font-family: Arial, sans-serif; /* 设置全局字体 */
-            background-color: #f8f8f8; /* 设置背景色为 #F8F8F8 */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            position: relative;
+            overflow: hidden;
         }
         .contentBox {
-            width: 100vw; /* 宽度100%屏幕宽度 */
-            max-width: 100%; /* 最大宽度不超过屏幕宽度 */
-            height: 194px; /* 设置高度为 194px */
-            padding: 28px; /* 内边距 */
-            box-sizing: border-box; /* 包括内边距和边框在内的总宽度 */
-            border: 0px solid #f8f8f8; /* 边框颜色和背景色一致 */
+            width: 100vw;
+            max-width: 100%;
+            height: 194px;
+            padding: 28px;
+            box-sizing: border-box;
+            border: 0px solid #f8f8f8;
+            position: relative;
+            z-index: 10;
         }
         .card-box {
-            width: 100%; /* 宽度100% */
-            height: 159px; /* 高度 */
-            border: 0px solid #f8f8f8; /* 边框颜色和背景色一致 */
-            box-sizing: border-box; /* 包括内边距和边框在内的总宽度 */
+            width: 100%;
+            height: 159px;
+            border: 0px solid #f8f8f8;
+            box-sizing: border-box;
         }
         .card-line {
-            width: 100%; /* 宽度100% */
-            height: 46px; /* 高度 */
-            padding: 12px 0; /* 内边距 */
-            margin: 0; /* 外边距设置为0，使其紧贴内边框 */
-            border-bottom: 1px solid #ebedf0; /* 底部边框实线样式，颜色为 #EBEDF0 */
-            box-sizing: border-box; /* 包括内边距和边框在内的总宽度 */
-            font-size: 14px; /* 设置字体大小，与 .label 和 .value 保持一致 */
+            width: 100%;
+            height: 46px;
+            padding: 12px 0;
+            margin: 0;
+            border-bottom: 1px solid #ebedf0;
+            box-sizing: border-box;
+            font-size: 14px;
         }
         .label, .value {
-            display: inline-block; /* 将 label 和 value 显示为行内块元素 */
-            vertical-align: middle; /* 垂直对齐方式 */
-            margin: 0; /* 清除默认的外边距 */
-            padding: 0; /* 清除默认的内边距 */
-            box-sizing: border-box; /* 包括内边距和边框在内的总宽度 */
-            outline: none !important; /* 清除默认的轮廓 */
-            outline-color: initial !important;
-            outline-style: none !important;
-            outline-width: initial !important;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none !important;
         }
         .label {
-            width: 86px; /* 宽度 */
-            color: #646566; /* 字体颜色 */
+            width: 86px;
+            color: #646566;
         }
         .value {
-            width: auto; /* 宽度自动调整 */
-            color: #000000; /* 字体颜色 */
+            width: auto;
+            color: #000000;
         }
+        /* 背景水印样式 */
+        .watermark-container {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            width: 100vw;
+            height: 115vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-left: 0px;
+            z-index: 1;
+            pointer-events: none;
+            gap: 0em;
+            align-items: start;
+        }
+        .watermark {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(-20deg);
+            opacity: 0.6;
+            font-size: 18.5px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.4);
+            text-align: left;
+            white-space: pre-wrap;
+            overflow: hidden;
+            clip-path: polygon(0 0, 65% 0, 100% 100%, 0 100%); /* 调整裁剪右上角 */
+            line-height: 1.4;
+
+
+
+         }
     </style>
 </head>
 <body>
+    <!-- 背景水印容器 -->
+    <div class="watermark-container">
+        <!-- 45 个水印 -->
+        <div class="watermark" id="watermark1"></div>
+        <div class="watermark" id="watermark2"></div>
+        <div class="watermark" id="watermark3"></div>
+        <div class="watermark" id="watermark4"></div>
+        <div class="watermark" id="watermark5"></div>
+        <div class="watermark" id="watermark6"></div>
+        <div class="watermark" id="watermark7"></div>
+        <div class="watermark" id="watermark8"></div>
+        <div class="watermark" id="watermark9"></div>
+        <div class="watermark" id="watermark10"></div>
+        <div class="watermark" id="watermark11"></div>
+        <div class="watermark" id="watermark12"></div>
+        <div class="watermark" id="watermark13"></div>
+        <div class="watermark" id="watermark14"></div>
+        <div class="watermark" id="watermark15"></div>
+        <div class="watermark" id="watermark16"></div>
+        <div class="watermark" id="watermark17"></div>
+        <div class="watermark" id="watermark18"></div>
+        <div class="watermark" id="watermark19"></div>
+        <div class="watermark" id="watermark20"></div>
+        <div class="watermark" id="watermark21"></div>
+        <div class="watermark" id="watermark22"></div>
+        <div class="watermark" id="watermark23"></div>
+        <div class="watermark" id="watermark24"></div>
+        <div class="watermark" id="watermark25"></div>
+        <div class="watermark" id="watermark26"></div>
+        <div class="watermark" id="watermark27"></div>
+        <div class="watermark" id="watermark28"></div>
+        <div class="watermark" id="watermark29"></div>
+        <div class="watermark" id="watermark30"></div>
+        <div class="watermark" id="watermark31"></div>
+        <div class="watermark" id="watermark32"></div>
+        <div class="watermark" id="watermark33"></div>
+        <div class="watermark" id="watermark34"></div>
+        <div class="watermark" id="watermark35"></div>
+        <div class="watermark" id="watermark36"></div>
+        <div class="watermark" id="watermark37"></div>
+        <div class="watermark" id="watermark38"></div>
+        <div class="watermark" id="watermark39"></div>
+        <div class="watermark" id="watermark40"></div>
+        <div class="watermark" id="watermark41"></div>
+        <div class="watermark" id="watermark42"></div>
+        <div class="watermark" id="watermark43"></div>
+        <div class="watermark" id="watermark44"></div>
+        <div class="watermark" id="watermark45"></div>
+    </div>
+
     <div class="contentBox">
         <div class="card-box">
             <div class="card-line">
@@ -68,9 +153,26 @@
             </div>
             <div class="card-line">
                 <div class="label">入网时间</div>
-                <div class="value">2023-10-31 14:13:03</div>
+                <div class="value">2023-11-10 14:28:09</div>
             </div>
         </div>
     </div>
+
+    <script>
+        // 获取当前时间并格式化为 YYYY-MM-DD HH:mm:ss
+        const currentDate = new Date();
+        const formattedDate = currentDate.getFullYear() + '-' +
+            String(currentDate.getMonth() + 1).padStart(2, '0') + '-' +
+            String(currentDate.getDate()).padStart(2, '0') + ' ' +
+            String(currentDate.getHours()).padStart(2, '0') + ':' +
+            String(currentDate.getMinutes()).padStart(2, '0') + ':' +
+            String(currentDate.getSeconds()).padStart(2, '0');
+
+        // 将水印时间插入到水印中
+        const watermarkText = `赣ART1367\n${formattedDate}`;
+        document.querySelectorAll('.watermark').forEach(watermark => {
+            watermark.textContent = watermarkText;
+        });
+    </script>
 </body>
 </html>
