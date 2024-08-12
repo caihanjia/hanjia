@@ -55,14 +55,14 @@
         }
         /* 背景水印样式 */
         .watermark-container {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            grid-template-rows: repeat(auto-fill, minmax(190px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
             gap: 30px; /* 固定间距 */
             z-index: 1;
             pointer-events: none;
